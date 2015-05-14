@@ -120,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnIng">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Ingrediance"/>
+        <Property name="text" type="java.lang.String" value="Add Ingredience"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngActionPerformed"/>
