@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `imrdb`
 --
+CREATE SCHEMA `imrdb` ;
 
 -- --------------------------------------------------------
 
@@ -26,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `company`
 --
 
-CREATE TABLE IF NOT EXISTS `company` (
+CREATE TABLE IF NOT EXISTS `imrdb`.`company` (
   `compk` int(5) NOT NULL AUTO_INCREMENT,
   `comname` char(30) NOT NULL,
   PRIMARY KEY (`compk`)
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`compk`, `comname`) VALUES
+INSERT INTO `imrdb`.`company` (`compk`, `comname`) VALUES
 (1, 'CMO''s Inc.'),
 (3, 'Imperial Mills');
 
@@ -46,7 +47,7 @@ INSERT INTO `company` (`compk`, `comname`) VALUES
 -- Table structure for table `ingredients`
 --
 
-CREATE TABLE IF NOT EXISTS `ingredients` (
+CREATE TABLE IF NOT EXISTS `imrdb`.`ingredients` (
   `ingpk` int(5) NOT NULL AUTO_INCREMENT,
   `ingredient` char(20) NOT NULL,
   PRIMARY KEY (`ingpk`)
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
 -- Dumping data for table `ingredients`
 --
 
-INSERT INTO `ingredients` (`ingpk`, `ingredient`) VALUES
+INSERT INTO `imrdb`.`ingredients` (`ingpk`, `ingredient`) VALUES
 (1, 'Amaranth'),
 (2, 'White Rice'),
 (3, 'Brown Rice'),
@@ -74,7 +75,7 @@ INSERT INTO `ingredients` (`ingpk`, `ingredient`) VALUES
 -- Table structure for table `ingtorec`
 --
 
-CREATE TABLE IF NOT EXISTS `ingtorec` (
+CREATE TABLE IF NOT EXISTS `imrdb`.`ingtorec` (
   `irpk` int(7) NOT NULL AUTO_INCREMENT,
   `recpk` int(5) NOT NULL,
   `ingpk` int(5) NOT NULL,
@@ -90,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `ingtorec` (
 -- Table structure for table `recipes`
 --
 
-CREATE TABLE IF NOT EXISTS `recipes` (
+CREATE TABLE IF NOT EXISTS `imrdb`.`recipes` (
   `recpk` int(5) NOT NULL AUTO_INCREMENT,
   `recipe` char(40) NOT NULL,
   PRIMARY KEY (`recpk`)
@@ -100,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `recipes` (
 -- Dumping data for table `recipes`
 --
 
-INSERT INTO `recipes` (`recpk`, `recipe`) VALUES
+INSERT INTO `imrdb`.`recipes` (`recpk`, `recipe`) VALUES
 (1, 'Test Panacakes'),
 (2, 'Test Panacakes');
 
@@ -110,7 +111,7 @@ INSERT INTO `recipes` (`recpk`, `recipe`) VALUES
 -- Table structure for table `rectocom`
 --
 
-CREATE TABLE IF NOT EXISTS `rectocom` (
+CREATE TABLE IF NOT EXISTS `imrdb`.`rectocom` (
   `rcpk` int(5) NOT NULL AUTO_INCREMENT,
   `compk` int(5) NOT NULL,
   `recpk` int(5) NOT NULL,
@@ -126,9 +127,9 @@ CREATE TABLE IF NOT EXISTS `rectocom` (
 --
 -- Constraints for table `ingtorec`
 --
-ALTER TABLE `ingtorec`
-  ADD CONSTRAINT `ingtorec_ibfk_2` FOREIGN KEY (`ingpk`) REFERENCES `ingredients` (`ingPK`),
-  ADD CONSTRAINT `ingtorec_ibfk_3` FOREIGN KEY (`recpk`) REFERENCES `rectocom` (`rcpk`);
+ALTER TABLE `imrdb`.`ingtorec`
+  ADD CONSTRAINT `ingtorec_ibfk_2` FOREIGN KEY (`ingpk`) REFERENCES `imrdb`.`ingredients` (`ingPK`),
+  ADD CONSTRAINT `ingtorec_ibfk_3` FOREIGN KEY (`recpk`) REFERENCES `imrdb`.`rectocom` (`rcpk`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
